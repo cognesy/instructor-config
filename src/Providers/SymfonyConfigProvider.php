@@ -11,16 +11,21 @@ class SymfonyConfigProvider implements CanProvideConfig
     private ContainerInterface $container;
     private ?Dot $dot = null;
 
-    public function __construct(ContainerInterface $container = null)
+    public function __construct(?ContainerInterface $container = null)
     {
+        if ($container === null) {
+            throw new \InvalidArgumentException('Container must be provided');
+        }
         $this->container = $container;
     }
 
+    #[\Override]
     public function get(string $path, mixed $default = null): mixed
     {
         return $this->getDot()->get($path, $default);
     }
 
+    #[\Override]
     public function has(string $path): bool
     {
         return $this->getDot()->has($path);
