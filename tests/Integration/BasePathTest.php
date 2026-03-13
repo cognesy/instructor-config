@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Cognesy\Config\Tests\Unit;
+namespace Cognesy\Config\Tests\Integration;
 
 use Cognesy\Config\BasePath;
 use InvalidArgumentException;
